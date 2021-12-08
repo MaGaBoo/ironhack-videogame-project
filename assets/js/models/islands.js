@@ -5,8 +5,8 @@ class Island {
         this.x = (this.ctx.canvas.width /2) - 400;
         this.y = (this.ctx.canvas.height / 2) + 300;
 
-        this.width = 100;
-        this.height = 100;
+        this.width = 130;
+        this.height = 70;
 
         this.vx = 1;
         

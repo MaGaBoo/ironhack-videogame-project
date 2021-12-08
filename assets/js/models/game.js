@@ -54,7 +54,7 @@ class Game {
     drawScore() {
         this.ctx.fillStyle = 'white';
         this.ctx.font = "24px sans-serif";
-        this.ctx.fillText(`Saved bunnies: ${this.score}`, 30, 700);
+        this.ctx.fillText(`Saved 🐰: ${this.score}`, 30, 700);
     }
 
 
@@ -85,14 +85,26 @@ class Game {
         )
     }
 
-    checkIfGetOnIsland() {
-        const isThereIsland = this.island.find(island => this.player.getOnIsland(island));
-
-        if (isThereIsland) {
-            this.islands = this.islands.filter(island => island !==isThereisland)
+    
+    checkCollission() {
+        const petColiding = this.pet.find(pet => this.player.collidesWith(pet))
+        
+        if (petColiding) {
+            
+            this.pet = this.pet.filter(pet => pet !== petColiding);
+            
+            this.score++
+            
         }
     }
     
+    checkIslandCollision() {
+        const isThereIsland = this.island.find(island => this.player.collidesWith(island));
+
+        if (isThereIsland) {
+           getOnIsland(island);
+        }
+    }
 
     oneKeyDown(keyCode) {
         this.player.oneKeyDown(keyCode);    
@@ -102,19 +114,15 @@ class Game {
         this.player.oneKeyUp(keyCode);
     }
 
-    checkCollission() {
-        const petColiding = this.pet.find(pet => this.player.collidesWith(pet))
-    
-        if (petColiding) {
-        
-          this.pet = this.pet.filter(pet => pet !== petColiding);
-
-          this.score++
-    
-        }
-    }
 }
 
-/* need to fix:
+/* need to check/fix:
 
-- what I did with GitHub? Why there are two branches? */
+- what I did to GitHub? Why are there two branches? 
+- background infinite scroll is not perfect: there´s a line between frames.
+- score counter should move with the background, need to learn how to do it.
+- player not always get the bunnies, sometimes it need to go over again
+- how can I generate random islands without crash the game with millions of them?
+- AND MOST IMPORTANT RIGHT NOW: how could my Player get on the islands?
+
+*/

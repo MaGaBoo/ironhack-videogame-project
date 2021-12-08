@@ -66,25 +66,35 @@ class Player {
     }
 
     update() {
+
         this.vy +=  this.gravity;
         this.x += this.vx;
         this.y += this.vy;
     }
 
-    getOnPlatform(platform) {
-        return this.x < platform.x + platform.width &&
-        this.x + this.width > platform.x &&
-        this.y < platform.y + platform.height &&
-        this.y + this.height > platform.y;
+    collidesWith(island) {
 
+        return this.x < island.x + island.width &&
+        this.x + this.width > island.x &&
+        this.y < island.y + island.height &&
+        this.y + this.height > island.y
     }
 
-    collidesWith(pet) {
+     collidesWith(pet) {
         return this.x < pet.x + pet.width &&
-          this.x + this.width > pet.x &&
-          this.y < pet.y + pet.height &&
-          this.y + this.height > pet.y
-      }
+        this.x + this.width > pet.x &&
+        this.y < pet.y + pet.height &&
+        this.y + this.height > pet.y
+    }
+    
+    getOnIsland(island) {
+
+        if (this.collidesWith(island)) {
+                this.maxY = island.y + island.height;
+                
+            }
+
+    }
 
     oneKeyDown(keyCode) {
 
