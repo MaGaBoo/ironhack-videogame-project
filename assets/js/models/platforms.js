@@ -2,8 +2,8 @@ class Platform {
     constructor (ctx, x, y) {
         this.ctx = ctx;
 
-        this.x = x;
-        this.y = y;
+        this.x = (this.ctx.canvas.width /2) - 400;
+        this.y = y + 200;
 
         this.width = 100;
         this.height = 100;

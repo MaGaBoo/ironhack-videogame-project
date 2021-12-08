@@ -7,10 +7,12 @@ class Player {
         this.y = this.maxY;
     
         this.vx = 0;
-        this.vy = 0;
-        this.ay = 1;
+        this.vy = 1;
+        this.ay = 0.5;
 
-        this.speedX = 4;
+        this.gravity = 0.5;
+
+        this.speedX = 8;
 
         this.width = 104;
         this.height = 114;
@@ -61,6 +63,12 @@ class Player {
             this.jumping = false;
         }
         
+    }
+
+    update() {
+        this.vy +=  this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
     }
 
     oneKeyDown(keyCode) {

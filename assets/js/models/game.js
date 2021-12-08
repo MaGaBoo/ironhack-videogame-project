@@ -1,4 +1,4 @@
-const PLATFORMS_FRAMES = 50;
+const platforms_max = 1;
 
 class Game {
     constructor(ctx) {
@@ -19,9 +19,9 @@ class Game {
 
             this.intervalId = setInterval(() => {
 
-                if (this.platformsFramesCount % PLATFORMS_FRAMES === 0) {
+                if (this.platformsFramesCount < platforms_max) {
                     this.addPlatforms();
-                    this.platformsFramesCount = 0;
+                  
                 }
                 this.platformsFramesCount ++;
     
@@ -48,11 +48,14 @@ class Game {
         this.background.draw();
         this.platforms.forEach(platform => platform.draw());
         this.player.draw();
+        this.player.update();
     }
 
     move() {
         /* this.background.move(); */
         this.player.move();
+
+       /*  this.platforms.forEach(platform => platform.move()); */
     }
 
     addPlatforms() {
@@ -73,3 +76,8 @@ class Game {
         this.player.oneKeyUp(keyCode);
     }
 }
+
+/* need to fix:
+
+- platforms everywhere on the screen
+- what I did with GitHub? Why there are two branches? */
