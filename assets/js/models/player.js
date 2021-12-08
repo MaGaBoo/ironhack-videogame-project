@@ -3,7 +3,7 @@ class Player {
         this.ctx = ctx;
 
         this.x = 25;
-        this.maxY = 610;
+        this.maxY = 965;
         this.y = this.maxY;
     
         this.vx = 0;
@@ -70,6 +70,21 @@ class Player {
         this.x += this.vx;
         this.y += this.vy;
     }
+
+    getOnPlatform(platform) {
+        return this.x < platform.x + platform.width &&
+        this.x + this.width > platform.x &&
+        this.y < platform.y + platform.height &&
+        this.y + this.height > platform.y;
+
+    }
+
+    collidesWith(pet) {
+        return this.x < pet.x + pet.width &&
+          this.x + this.width > pet.x &&
+          this.y < pet.y + pet.height &&
+          this.y + this.height > pet.y
+      }
 
     oneKeyDown(keyCode) {
 

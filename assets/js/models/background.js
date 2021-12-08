@@ -3,12 +3,13 @@ class Background {
         this.ctx = ctx;
 
         this.x = 0;
+        this.vx = -0.2;
 
         this.width = this.ctx.canvas.width;
         this.height = this.ctx.canvas.height;
 
         this.img = new Image();
-        this.img.src = '/assets/images/pink-bg.png';
+        this.img.src = '/assets/images/platformer_background_3.png';
         this.img.isReady = false;
 
         this.img.onload = () => {

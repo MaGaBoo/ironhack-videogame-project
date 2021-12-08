@@ -1,9 +1,9 @@
-class Platform {
+class Island {
     constructor (ctx, x, y) {
         this.ctx = ctx;
 
         this.x = (this.ctx.canvas.width /2) - 400;
-        this.y = y + 200;
+        this.y = (this.ctx.canvas.height / 2) + 300;
 
         this.width = 100;
         this.height = 100;
