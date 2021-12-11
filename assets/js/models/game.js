@@ -16,7 +16,6 @@ class Game {
         this.intervalId = undefined;
         this.fps = 1000 / 60;
         
-        this.petsFramesCount = 0;
         this.islandsFramesCount = 0;
 
         this.score = 0;
@@ -48,13 +47,6 @@ class Game {
 
     clear() {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
-
-        const alreadySavedBunnies = this.pets.length;   
-
-        this.pets = this.pets.filter(pet => pet.x <this.ctx.canvas.width);
-        if (this.pets.length < alreadySavedBunnies) {
-            this.score++
-        }
 
     }
 
@@ -94,11 +86,11 @@ class Game {
 
     
     checkCollission() {
-        const petColiding = this.pets.some(pet => this.player.collidesWith(pet))
+        const petColiding = this.pets.find(pet => this.player.collidesWith(pet))
         
         if (petColiding) {
             
-            this.pet = this.pets.filter(pet => pet === petColiding);
+            this.pets = this.pets.filter(pet => pet !== petColiding);
             
             this.score++
             
@@ -126,8 +118,5 @@ class Game {
 - score counter should move with the background, need to learn how to do it.
 - player not always get the bunnies, sometimes it need to go over again UPDATED now player can´t get bunnies
 - how can I generate random islands without crash the game with millions of them?
-- where I put "update" function? Player dissapears underground when I call it.
-- AND MOST IMPORTANT RIGHT NOW: how could my Player get on the islands?
-
 - I want bunnies everywhere on the canvas and I don´t want it behind player.
 */

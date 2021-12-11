@@ -86,14 +86,10 @@ class Player {
     }
 
      collidesWith(pet) {
-        if (
-        this.x < pet.x + pet.width &&
+        return this.x < pet.x + pet.width &&
         this.x + this.width > pet.x &&
         this.y < pet.y + pet.height &&
-        this.y + this.height > pet.y) {
-            return true;
-        }
-            return false;
+        this.y + this.height > pet.y
     }
     
     getOnIsland(islandY) {
