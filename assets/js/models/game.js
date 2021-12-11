@@ -1,4 +1,5 @@
-const islands_max = 1;
+const BUNNIES_FRAMES = 300;
+const islands_max = 5;
 
 class Game {
     constructor(ctx) {
@@ -7,13 +8,15 @@ class Game {
         this.background = new Background(ctx);
         this.player = new Player(ctx);
         this.islands = [];
-        this.pet = [
-            new Pet(ctx, 300),
-            new Pet(ctx, 500)
+        this.pets = [
+            new Pet (ctx, 250),
+            new Pet (ctx, 500)
         ]
 
         this.intervalId = undefined;
         this.fps = 1000 / 60;
+        
+        this.petsFramesCount = 0;
         this.islandsFramesCount = 0;
 
         this.score = 0;
@@ -21,26 +24,23 @@ class Game {
 
     start() {
 
-        if (!this.intervalId) {
-
+        if (!this.invervalId) {
             this.intervalId = setInterval(() => {
+       
 
                 if (this.islandsFramesCount < islands_max) {
                     this.addIslands();
                   
                 }
-                this.islandsFramesCount ++;
-    
+                this.islandsFramesCount++;
+
                 this.clear();
-               
                 this.move();
-               
                 this.draw();
 
                 this.checkCollission();
-    
+                this.checkIslandsCollision();
             }, this.fps)
-            
         }
         
        
@@ -49,12 +49,21 @@ class Game {
     clear() {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
+        const alreadySavedBunnies = this.pets.length;   
+
+        this.pets = this.pets.filter(pet => pet.x <this.ctx.canvas.width);
+        if (this.pets.length < alreadySavedBunnies) {
+            this.score++
+        }
+
     }
 
     drawScore() {
+        this.ctx.save();
         this.ctx.fillStyle = 'white';
         this.ctx.font = "24px sans-serif";
         this.ctx.fillText(`Saved 🐰: ${this.score}`, 30, 700);
+        this.ctx.restore();
     }
 
 
@@ -62,18 +71,16 @@ class Game {
         this.background.draw();
         this.islands.forEach(island => island.draw());
         this.player.draw();
-        this.player.update();
-        this.pet.forEach(pet => pet.draw());
+        this.pets.forEach(pet => pet.draw());
         this.drawScore();
     }
 
     move() {
         this.background.move();
         this.player.move();
-        this.pet.forEach(pet => pet.move());
-
-      
+        this.pets.forEach(pet => pet.move());
     }
+
 
     addIslands() {
         const max = this.ctx.canvas.height - 300;
@@ -87,23 +94,19 @@ class Game {
 
     
     checkCollission() {
-        const petColiding = this.pet.find(pet => this.player.collidesWith(pet))
+        const petColiding = this.pets.some(pet => this.player.collidesWith(pet))
         
         if (petColiding) {
             
-            this.pet = this.pet.filter(pet => pet !== petColiding);
+            this.pet = this.pets.filter(pet => pet === petColiding);
             
             this.score++
             
         }
     }
-    
-    checkIslandCollision() {
-        const isThereIsland = this.island.find(island => this.player.collidesWith(island));
-
-        if (isThereIsland) {
-           getOnIsland(island);
-        }
+     
+    checkIslandsCollision() {
+        this.islands.forEach(island => this.player.collidesWithIsland(island));
     }
 
     oneKeyDown(keyCode) {
@@ -121,8 +124,10 @@ class Game {
 - what I did to GitHub? Why are there two branches? 
 - background infinite scroll is not perfect: there´s a line between frames.
 - score counter should move with the background, need to learn how to do it.
-- player not always get the bunnies, sometimes it need to go over again
+- player not always get the bunnies, sometimes it need to go over again UPDATED now player can´t get bunnies
 - how can I generate random islands without crash the game with millions of them?
+- where I put "update" function? Player dissapears underground when I call it.
 - AND MOST IMPORTANT RIGHT NOW: how could my Player get on the islands?
 
+- I want bunnies everywhere on the canvas and I don´t want it behind player.
 */

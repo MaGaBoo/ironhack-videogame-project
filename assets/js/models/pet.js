@@ -44,8 +44,9 @@ class Pet {
     }
 
     move() {
-        
 
+        /* this.x += this.vx; */
+    
             if (this.xFrame >= this.horizontalFrames) {
                 this.xFrame = 0;
             }

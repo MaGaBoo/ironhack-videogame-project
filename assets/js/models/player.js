@@ -5,12 +5,12 @@ class Player {
         this.x = 25;
         this.maxY = 965;
         this.y = this.maxY;
+
+        this.prevY = this.y;
     
         this.vx = 0;
         this.vy = 1;
-        this.ay = 0.5;
-
-        this.gravity = 0.5;
+        this.ay = 1;
 
         this.speedX = 8;
 
@@ -44,6 +44,7 @@ class Player {
     move() {
         this.x += this.vx;
         this.vy += this.ay;
+        this.prevY = this.y;
         this.y += this.vy;
 
         if (this.x <= 0) {
@@ -60,47 +61,59 @@ class Player {
 
         if (this.y >= this.maxY) {
             this.y = this.maxY;
-            this.jumping = false;
+            this.jumping = 0;
         }
         
     }
 
-    update() {
+    collidesWithIsland(island) {
+        const xPadding = 10;
+        const yPadding = 20;
 
-        this.vy +=  this.gravity;
-        this.x += this.vx;
-        this.y += this.vy;
-    }
-
-    collidesWith(island) {
-
-        return this.x < island.x + island.width &&
-        this.x + this.width > island.x &&
-        this.y < island.y + island.height &&
-        this.y + this.height > island.y
+        if(this.vy >= 0 &&
+        this.x + this.width / 2 + xPadding < island.x + island.width &&
+        this.x + this.width - this.width / 2 > island.x &&
+        this.y + this.height >= island.y + yPadding &&
+        this.prevY + this.height <= island.y + yPadding ||
+        this.maxY === island.y - this.height + yPadding &&
+        this.x + this.width / 2 + xPadding < island.x + island.width &&
+        this.x + this.width - this.width / 2 > island.x) {
+            this.getOnIsland(island.y + yPadding);
+        
+        } else {
+            this.getOnFloor();
+        }
     }
 
      collidesWith(pet) {
-        return this.x < pet.x + pet.width &&
+        if (
+        this.x < pet.x + pet.width &&
         this.x + this.width > pet.x &&
         this.y < pet.y + pet.height &&
-        this.y + this.height > pet.y
+        this.y + this.height > pet.y) {
+            return true;
+        }
+            return false;
     }
     
-    getOnIsland(island) {
+    getOnIsland(islandY) {
+        this.maxY = islandY - this.height;
+    }
 
-        if (this.collidesWith(island)) {
-                this.maxY = island.y + island.height;
-                
-            }
-
+    getOnFloor() {
+        if(this.maxY !== 965) {
+            this.vy = 0;
+            this.maxY = 965;
+        }
     }
 
     oneKeyDown(keyCode) {
 
-        if (keyCode === TOP_KEY && !this.jumping) {
-            this.vy = -15;
-            this.jumping = true;
+        if (keyCode === TOP_KEY) {
+            if(this.jumping <= 1) {
+                this.vy = -20;
+                this.jumping++
+            }
         }
 
         if (keyCode === RIGHT_KEY) {
