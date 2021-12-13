@@ -86,19 +86,13 @@ class Player {
 
      collidesWithPet(pet) {
 
-        return this.x < pet.x + pet.width &&
-        this.x + this.width > pet.x &&
-        this.y < pet.y + pet.height &&
-        this.y + this.height > pet.y
-
-        /* const xPetPadding = 10;
+        const xPetPadding = 10;
         const yPetPadding = 10;
 
-        return this.x + this.width / 2 + xPetPadding < pet.x + pet.width &&
-        this.x + this.width - this.width / 2 > pet.x &&
-        this.y + this.height >= pet.y + yPetPadding &&
-        this.x + this.width / 2 + xPetPadding < pet.x + pet.width &&
-        this.x + this.width - this.width / 2 > pet.x; */
+        return this.x + this.width / 2 - xPetPadding < pet.x + pet.width &&
+        this.x + this.width / 2 - xPetPadding > pet.x &&
+        this.y + this.height >= pet.y &&
+        this.y <= pet.y + pet.height
     }
     
     getOnIsland(islandY) {
@@ -113,10 +107,13 @@ class Player {
     }
 
     collidesWithNut(nut) {
+        
         return this.x < nut.x + nut.width &&
         this.x + this.width > nut.x &&
         this.y < nut.y + nut.height &&
         this.y + this.height > nut.y
+
+        
     }
 
     oneKeyDown(keyCode) {

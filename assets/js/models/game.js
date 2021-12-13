@@ -186,7 +186,7 @@ class Game {
 
           this.ctx.fillStyle = 'white';
           this.ctx.textAlign = 'center'
-          this.ctx.font = 'bold 32px sans-serif'
+          this.ctx.font = 'bold 64px sans-serif'
           this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 2)
       
           this.ctx.restore()

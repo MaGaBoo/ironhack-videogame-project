@@ -44,7 +44,6 @@ class FallingNut {
                 this.y,
                 this.width,
                 this.height
-
             )
         }
 
