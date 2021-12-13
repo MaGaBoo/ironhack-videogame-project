@@ -37,7 +37,7 @@ class FallingNut {
 
     move() {
         
-        this.vy -= this.speedY;
+        this.y += this.speedY;
 
     }
  
