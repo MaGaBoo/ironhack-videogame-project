@@ -1,4 +1,5 @@
-class Background {
+class GroundBackground {
+
     constructor(ctx) {
         this.ctx = ctx;
 
@@ -9,7 +10,7 @@ class Background {
         this.height = this.ctx.canvas.height;
 
         this.img = new Image();
-        this.img.src = '/assets/images/platformer_background_3.png';
+        this.img.src = '/assets/images/layer01_Ground.png';
         this.img.isReady = false;
 
         this.img.onload = () => {
@@ -37,13 +38,13 @@ class Background {
         }
     }
 
-    /* move() {
+    move() {
         this.x += this.vx;
     
         if (this.x + this.width <= 0) {
           this.x = 0
         }
-      } */
+      }
 
     
 }

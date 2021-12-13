@@ -1,12 +1,14 @@
 const BUNNIES_FRAMES = 300;
 const ISLANDS_FRAMES = 240;
-const FALLINGNUTS_FRAMES = 180;
+const FALLINGNUTS_FRAMES = 60;
 
 class Game {
     constructor(ctx) {
         this.ctx = ctx;
 
         this.background = new Background(ctx);
+        this.cloudsBackground = new CloudsBackground(ctx);
+        this.groundBackground = new GroundBackground(ctx);
         this.player = new Player(ctx);
         this.islands = [];
         this.pets = [];
@@ -56,8 +58,7 @@ class Game {
                 this.checkNutsCollision();
 
             }, this.fps)
-        }
-        
+        }     
        
     }
 
@@ -69,7 +70,7 @@ class Game {
     drawScore() {
         this.ctx.save();
         this.ctx.fillStyle = 'white';
-        this.ctx.font = "24px sans-serif";
+        this.ctx.font = "36px sans-serif";
         this.ctx.fillText(`Saved 🐰: ${this.score}`, 30, 700);
         this.ctx.restore();
     }
@@ -77,6 +78,8 @@ class Game {
 
     draw() {
         this.background.draw();
+        this.cloudsBackground.draw();
+        this.groundBackground.draw();
         this.islands.forEach(island => island.draw());
         this.player.draw();
         this.pets.forEach(pet => pet.draw());
@@ -88,6 +91,8 @@ class Game {
 
     move() {
         /* this.background.move(); */
+        this.cloudsBackground.move();
+        this.groundBackground.move();
         this.player.move();
         this.pets.forEach(pet => pet.move());
         this.islands.forEach(island => island.move());
@@ -115,8 +120,7 @@ class Game {
                     )
                 }
             }
-
-            
+        
      addIslands() {
          
                 const max = 600;

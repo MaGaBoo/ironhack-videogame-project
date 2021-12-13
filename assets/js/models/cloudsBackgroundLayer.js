@@ -1,15 +1,15 @@
-class Background {
+class CloudsBackground {
     constructor(ctx) {
         this.ctx = ctx;
 
         this.x = 0;
-        this.vx = -1.2;
+        this.vx = -1.5;
 
         this.width = this.ctx.canvas.width;
         this.height = this.ctx.canvas.height;
 
         this.img = new Image();
-        this.img.src = '/assets/images/platformer_background_3.png';
+        this.img.src = '/assets/images/layer05_Clouds.png';
         this.img.isReady = false;
 
         this.img.onload = () => {
@@ -37,13 +37,12 @@ class Background {
         }
     }
 
-    /* move() {
+    move() {
+
         this.x += this.vx;
     
         if (this.x + this.width <= 0) {
           this.x = 0
         }
-      } */
-
-    
-}
+      }
+    }
