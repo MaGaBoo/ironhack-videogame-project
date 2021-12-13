@@ -84,8 +84,10 @@ class Game {
         this.drawScore();
     }
 
+   
+
     move() {
-        this.background.move();
+        /* this.background.move(); */
         this.player.move();
         this.pets.forEach(pet => pet.move());
         this.islands.forEach(island => island.move());
@@ -127,9 +129,6 @@ class Game {
             }
 
     addFallingNuts() {
-
-        const nutHeight = 75;
-        /* const nutPadding = 10; */
 
        const maxWidth = 1910;
        const minWidth = 500;
@@ -202,6 +201,7 @@ class Game {
 /* need to check/fix:
 
 - background infinite scroll is not perfect: there´s a line between frames.
-- no falling nuts around
-- need to fix player-bunny collision: + both paddings for more realistic effect
+- player-bunny collision fixed but first bunny dissapears and no more bunnies on islands.
+- fix player-nut collision as well
+- can´t rotate nuts, why are they fallin twice?
 */

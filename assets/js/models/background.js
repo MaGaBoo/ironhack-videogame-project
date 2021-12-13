@@ -36,13 +36,13 @@ class Background {
         }
     }
 
-    move() {
+    /* move() {
         this.x += this.vx;
     
         if (this.x + this.width <= 0) {
           this.x = 0
         }
-      }
+      } */
 
     
 }

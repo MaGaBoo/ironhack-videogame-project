@@ -85,10 +85,20 @@ class Player {
     }
 
      collidesWithPet(pet) {
+
         return this.x < pet.x + pet.width &&
         this.x + this.width > pet.x &&
         this.y < pet.y + pet.height &&
         this.y + this.height > pet.y
+
+        /* const xPetPadding = 10;
+        const yPetPadding = 10;
+
+        return this.x + this.width / 2 + xPetPadding < pet.x + pet.width &&
+        this.x + this.width - this.width / 2 > pet.x &&
+        this.y + this.height >= pet.y + yPetPadding &&
+        this.x + this.width / 2 + xPetPadding < pet.x + pet.width &&
+        this.x + this.width - this.width / 2 > pet.x; */
     }
     
     getOnIsland(islandY) {
