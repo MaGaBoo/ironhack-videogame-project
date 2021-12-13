@@ -78,11 +78,10 @@ class Player {
         this.maxY === island.y - this.height + yPadding &&
         this.x + this.width / 2 + xPadding < island.x + island.width &&
         this.x + this.width - this.width / 2 > island.x) {
-            this.getOnIsland(island.y + yPadding);
-        
-        } else {
-            this.getOnFloor();
+            return true;
         }
+
+        return false;
     }
 
      collidesWith(pet) {
@@ -97,7 +96,7 @@ class Player {
     }
 
     getOnFloor() {
-        if(this.maxY !== 965) {
+        if (this.maxY !== 965) {
             this.vy = 0;
             this.maxY = 965;
         }

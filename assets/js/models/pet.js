@@ -1,14 +1,14 @@
 class Pet {
-    constructor(ctx, x) {
+    constructor(ctx, x, y, width, height) {
         this.ctx = ctx;
 
         this.x = x;
-        this.y = 985;
+        this.y = y;
 
-        this.width = 115;
-        this.height = 100;
+        this.width = width;
+        this.height = height;
 
-        this.vx = -1;
+        this.vx = 1;
 
         this.img = new Image();
         this.img.src = '/assets/images/animal_sprites.png';
@@ -45,10 +45,7 @@ class Pet {
 
     move() {
 
-        /* this.x += this.vx; */
-    
-            if (this.xFrame >= this.horizontalFrames) {
-                this.xFrame = 0;
-            }
+        this.x -= this.vx;
+
         }
     }

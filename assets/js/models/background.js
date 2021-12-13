@@ -3,7 +3,7 @@ class Background {
         this.ctx = ctx;
 
         this.x = 0;
-        this.vx = -0.2;
+        this.vx = -1.2;
 
         this.width = this.ctx.canvas.width;
         this.height = this.ctx.canvas.height;

@@ -1,23 +1,24 @@
-class Island {
+class FallingNut {
     constructor (ctx, x, y) {
+
         this.ctx = ctx;
 
         this.x = x;
         this.y = y;
 
-        this.width = 130;
-        this.height = 70;
+        this.vy = 0;
+        this.speedY = 4;
 
-        this.vx = 1;
-        
+        this.width = 75;
+        this.height = 75;
 
         this.img = new Image();
-        this.img.src = "/assets/images/Pad_02_1.png";
+        this.img.src = '/assets/images/Prop_3.png';
         this.img.isReady = false;
-
         this.img.onload = () => {
             this.img.isReady = true;
         }
+
     }
 
     draw() {
@@ -28,11 +29,16 @@ class Island {
                 this.y,
                 this.width,
                 this.height
+
             )
         }
+       
     }
 
     move() {
-        this.x -= this.vx;
+        
+        this.vy -= this.speedY;
+
     }
+ 
 }

@@ -1,5 +1,6 @@
 const BUNNIES_FRAMES = 300;
-const islands_max = 5;
+const ISLANDS_FRAMES = 240;
+const FALLINGNUTS_FRAMES = 180;
 
 class Game {
     constructor(ctx) {
@@ -8,15 +9,14 @@ class Game {
         this.background = new Background(ctx);
         this.player = new Player(ctx);
         this.islands = [];
-        this.pets = [
-            new Pet (ctx, 250),
-            new Pet (ctx, 500)
-        ]
+        this.pets = [];
+        this.fallingNuts = [];
 
         this.intervalId = undefined;
         this.fps = 1000 / 60;
-        
-        this.islandsFramesCount = 0;
+        this.petFramesCount = 0;
+        this.islandFramesCount = 0;
+        this.fallingNutsFramesCount = 0;
 
         this.score = 0;
     }
@@ -27,11 +27,25 @@ class Game {
             this.intervalId = setInterval(() => {
        
 
-                if (this.islandsFramesCount < islands_max) {
+                if (this.islandFramesCount % ISLANDS_FRAMES === 0) {
                     this.addIslands();
+                    this.islandFramesCount = 0;
                   
                 }
-                this.islandsFramesCount++;
+
+                if (this.petFramesCount % BUNNIES_FRAMES === 0) {
+                    this.addPets();
+                    this.petFramesCount = 0;
+                }
+
+                if (this.fallingNutsFramesCount % FALLINGNUTS_FRAMES === 0) {
+                    this.addFallingNuts();
+                    this.fallingNutsFramesCount = 0;
+                }
+
+                this.islandFramesCount++;
+                this.petFramesCount++;
+                this.fallingNutsFramesCount++;
 
                 this.clear();
                 this.move();
@@ -64,6 +78,7 @@ class Game {
         this.islands.forEach(island => island.draw());
         this.player.draw();
         this.pets.forEach(pet => pet.draw());
+        this.fallingNuts.forEach(fallingNut => fallingNut.draw());
         this.drawScore();
     }
 
@@ -71,17 +86,59 @@ class Game {
         this.background.move();
         this.player.move();
         this.pets.forEach(pet => pet.move());
+        this.islands.forEach(island => island.move());
+        this.fallingNuts.forEach(fallingNut => fallingNut.move());
     }
 
+        addPets() {
+        const petWidth = 115;
+        const petHeight = 115;
+        const petBottomPadding = 10;
+        
+        const x = this.ctx.canvas.width;
+        const y = this.ctx.canvas.height - petHeight + petBottomPadding;
+        const randomIsland = this.islands.filter(island => island.x > this.ctx.canvas.width)[Math.floor(Math.random() * this.islands.length)];
+        const randomIslandXPosition = randomIsland?.x;
+        const randomIslandYPosition = randomIsland?.y - petHeight + petBottomPadding + 20;
+        
+        if(randomIsland) {
+            this.pets.push(
+                new Pet (this.ctx, randomIslandXPosition, randomIslandYPosition, petWidth, petHeight)
+                )
+            } else {
+                this.pets.push(
+                    new Pet (this.ctx, x, y, petWidth, petHeight)
+                    )
+                }
+            }
 
-    addIslands() {
-        const max = this.ctx.canvas.height - 300;
+            
+     addIslands() {
+         
+                const max = 600;
+                const min = 930;
+                const y = Math.floor(Math.random() * (max - min + 1) + min);
+        
+                this.islands.push(
+                    new Island (this.ctx, this.ctx.canvas.width + 50, y)
+                )
+            }
 
-        const y = Math.floor(Math.random() * max);
+    addFallingNuts() {
 
-        this.islands.push(
-            new Island (this.ctx, 0, y)
+        const nutHeight = 75;
+        /* const nutPadding = 10; */
+
+       const maxWidth = 1910;
+       const minWidth = 500;
+      
+        const x = Math.floor(Math.random() * (maxWidth - minWidth + 1) + minWidth);
+        const y = 0;
+
+        this.fallingNuts.push(
+            new FallingNut (this.ctx, x, y)
         )
+           
     }
 
     
@@ -97,8 +154,13 @@ class Game {
         }
     }
      
-    checkIslandsCollision() {
-        this.islands.forEach(island => this.player.collidesWithIsland(island));
+    checkIslandsCollision() {        
+        const collisionIsland = this.islands.filter(island => this.player.collidesWithIsland(island))
+        if(collisionIsland.length > 0) {
+            this.player.getOnIsland(collisionIsland[0].y + 20)
+        } else {
+            this.player.getOnFloor()
+        }
     }
 
     oneKeyDown(keyCode) {
@@ -113,10 +175,7 @@ class Game {
 
 /* need to check/fix:
 
-- what I did to GitHub? Why are there two branches? 
 - background infinite scroll is not perfect: there´s a line between frames.
-- score counter should move with the background, need to learn how to do it.
-- player not always get the bunnies, sometimes it need to go over again UPDATED now player can´t get bunnies
-- how can I generate random islands without crash the game with millions of them?
-- I want bunnies everywhere on the canvas and I don´t want it behind player.
+- no falling nuts around
+- need to fix player-bunny collision: + both paddings for more realistic effect
 */
