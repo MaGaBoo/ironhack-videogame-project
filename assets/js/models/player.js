@@ -84,7 +84,7 @@ class Player {
         return false;
     }
 
-     collidesWith(pet) {
+     collidesWithPet(pet) {
         return this.x < pet.x + pet.width &&
         this.x + this.width > pet.x &&
         this.y < pet.y + pet.height &&
@@ -100,6 +100,13 @@ class Player {
             this.vy = 0;
             this.maxY = 965;
         }
+    }
+
+    collidesWithNut(nut) {
+        return this.x < nut.x + nut.width &&
+        this.x + this.width > nut.x &&
+        this.y < nut.y + nut.height &&
+        this.y + this.height > nut.y
     }
 
     oneKeyDown(keyCode) {

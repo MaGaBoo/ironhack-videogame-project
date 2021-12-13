@@ -51,8 +51,10 @@ class Game {
                 this.move();
                 this.draw();
 
-                this.checkCollission();
+                this.checkPetCollission();
                 this.checkIslandsCollision();
+                this.checkNutsCollision();
+
             }, this.fps)
         }
         
@@ -142,8 +144,8 @@ class Game {
     }
 
     
-    checkCollission() {
-        const petColiding = this.pets.find(pet => this.player.collidesWith(pet))
+    checkPetCollission() {
+        const petColiding = this.pets.find(pet => this.player.collidesWithPet(pet))
         
         if (petColiding) {
             
@@ -161,6 +163,30 @@ class Game {
         } else {
             this.player.getOnFloor()
         }
+    }
+
+    checkNutsCollision() {
+        const collisionNut = this.fallingNuts.some(nut => this.player.collidesWithNut(nut))
+        if (collisionNut) {
+
+            this.gameOver();
+        }
+    }
+
+    gameOver() {
+        clearInterval(this.intervalId);
+
+        this.ctx.save();
+
+        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+          this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+
+          this.ctx.fillStyle = 'white';
+          this.ctx.textAlign = 'center'
+          this.ctx.font = 'bold 32px sans-serif'
+          this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 2)
+      
+          this.ctx.restore()
     }
 
     oneKeyDown(keyCode) {
