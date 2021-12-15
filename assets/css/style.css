@@ -8,15 +8,30 @@ body {
 
     width: 100vw;
     height: 100vh;
+    
+}
+
+.flex-container {
+
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 50px;
+}
+
+#heroContainer {
+    width: 1000px;
+    height:800px;
+    position: absolute;
+    overflow: hidden;
+    text-align: center;
+    justify-content: center;
+    top: 75px;
 }
 
 
 body button {
 
-    position: absolute;
     font-size: 40px;
     font-family:Arial, Helvetica, sans-serif;
     background-color: #6667AB;
@@ -30,10 +45,7 @@ body button {
     
 }
 
-
 #game-canvas {
-
-    width: 1500px;
     width: 1000px;
     border: 2px solid black;
 }

@@ -18,6 +18,6 @@ window.onload = function() {
       })
 }
 
-document.getElementById("start-button").addEventListener("click", function() {
-    document.getElementById("start-button").hidden = true;
+document.getElementById("heroContainer").addEventListener("click", function() {
+    document.getElementById("heroContainer").hidden = true;
 })

@@ -18,7 +18,7 @@ class Player {
         this.height = 115;
 
         this.img = new Image();
-        this.img.src = "/assets/images/WalkOne.png";
+        this.img.src = "/assets/images/player_sprite_sheet.png";
         this.img.isReady = false;
 
         this.img.onload = () => {
@@ -26,21 +26,25 @@ class Player {
         }
 
         this.horizontalFrames = 4;
-        this.verticalFrames = 4;
+        this.verticalFrames = 2;
 
-        this.xFrame = 0;
-        this.yFrame = 0;
+        this.xFrame = 1;
+        this.yFrame = 1;
 
         this.running = false;
         this.jumping = false;
+
+        this.tick = 0;
     }
 
     draw() {
         if (this.img.isReady) {
             this.ctx.drawImage(
                 this.img,
-               /*  (this.img.width * this.xFrame) / this.horizontalFrames,
-                (this.img.height * this.yFrame) / this.verticalFrames, */
+                (this.img.width * this.xFrame) / this.horizontalFrames,
+                (this.img.height * this.yFrame) / this.verticalFrames,
+                this.img.width / this.horizontalFrames,
+                this.img.height / this.verticalFrames,
                 this.x,
                 this.y,
                 this.width,
@@ -73,13 +77,13 @@ class Player {
             this.jumping = 0;
         }
         
-        /* if (this.tick % 8 === 0) {
-            this.xFrame +=1;
+        if (this.tick % 7 === 0) {
+            this.xFrame++;
         }
 
-        if (this.xFrame > 1) {
+        if (this.xFrame > (this.horizontalFrames - 1)) {
             this.xFrame = 0;
-        } */
+        }
         
     }
 
