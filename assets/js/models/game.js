@@ -205,7 +205,7 @@ class Game {
 /* need to check/fix:
 
 - background infinite scroll is not perfect: there´s a line between frames.
-- player-bunny collision fixed but first bunny dissapears and no more bunnies on islands.
-- fix player-nut collision as well
-- can´t rotate nuts, why are they fallin twice?
+- fix player-nut collision 
+- learn how to animate sprites!!
+- start first screen
 */

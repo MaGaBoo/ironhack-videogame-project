@@ -17,3 +17,7 @@ window.onload = function() {
         game.oneKeyUp(event.keyCode);
       })
 }
+
+document.getElementById("start-button").addEventListener("click", function() {
+    document.getElementById("start-button").hidden = true;
+})
