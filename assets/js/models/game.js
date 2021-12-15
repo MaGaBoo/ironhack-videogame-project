@@ -90,7 +90,7 @@ class Game {
    
 
     move() {
-        /* this.background.move(); */
+      
         this.cloudsBackground.move();
         this.groundBackground.move();
         this.player.move();
@@ -100,15 +100,15 @@ class Game {
     }
 
         addPets() {
-        const petWidth = 115;
-        const petHeight = 115;
+        const petWidth = 75;
+        const petHeight = 75;
         const petBottomPadding = 10;
         
         const x = this.ctx.canvas.width;
         const y = this.ctx.canvas.height - petHeight + petBottomPadding;
         const randomIsland = this.islands.filter(island => island.x > this.ctx.canvas.width)[Math.floor(Math.random() * this.islands.length)];
-        const randomIslandXPosition = randomIsland?.x;
-        const randomIslandYPosition = randomIsland?.y - petHeight + petBottomPadding + 20;
+        const randomIslandXPosition = randomIsland?.x + 30;
+        const randomIslandYPosition = randomIsland?.y - petHeight + petBottomPadding + 18;
         
         if(randomIsland) {
             this.pets.push(
@@ -186,7 +186,7 @@ class Game {
 
           this.ctx.fillStyle = 'white';
           this.ctx.textAlign = 'center'
-          this.ctx.font = 'bold 64px sans-serif'
+          this.ctx.font = 'bold 132px sans-serif'
           this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 2)
       
           this.ctx.restore()
@@ -204,8 +204,13 @@ class Game {
 
 /* need to check/fix:
 
-- background infinite scroll is not perfect: there´s a line between frames.
 - fix player-nut collision 
-- learn how to animate sprites!!
-- start first screen
+- remake nut sprite for better appearance
+- make player look at left when change direction
+- dead player sprite when nut collision
+
+- background image for intro screen
+- change start button color (pantone very peri no pega por mucho que te encante)
+
+💡 obtener rewards (o points) saltando x veces en las plataformas y reset a cero si caes al suelo
 */

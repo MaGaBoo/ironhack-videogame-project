@@ -11,18 +11,19 @@ class Pet {
         this.vx = 1;
 
         this.img = new Image();
-        this.img.src = '/assets/images/animal_sprites.png';
+        this.img.src = '/assets/images/bunniesSprite.png';
         this.img.isReady = false;
         this.img.onload = () => {
             this.img.isReady = true;
         }
 
         this.horizontalFrames = 3;
-        this.verticalFrames = 3;
+        this.verticalFrames = 1;
 
         this.xFrame = 0;
         this.yFrame = 0;
 
+        this.tick = 0;
       
     }
 
@@ -40,11 +41,20 @@ class Pet {
                 this.height
             )
         }
+
+        this.tick++
        
     }
 
     move() {
 
+        if (this.tick % 5 === 0) {
+            this.xFrame++
+        }
+
+        if (this.xFrame >= this.horizontalFrames) {
+            this.xFrame = 0;
+        }
         this.x -= this.vx;
 
         }
