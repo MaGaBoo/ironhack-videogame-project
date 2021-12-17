@@ -24,7 +24,7 @@ class Game {
         /* this.jumpingScore = 0; */
 
         this.sound = new Audio('/assets/sound/POL-macaron-island-short.wav');
-        this.sound.volume = 0.2;
+        this.sound.volume = 0.3;
         
         const musicLoop = this.sound;
         if (typeof musicLoop.loop == 'boolean') {
@@ -36,7 +36,10 @@ class Game {
             }, false);
         }
 
-        musicLoop.play;
+        this.gameOverSound = new Audio ('/assets/sound/mixkit-musical-game-over-959.wav');
+        this.jumpSound = new Audio ('/assets/sound/Mario_Jumping-Mike_Koenig-989896458.mp3');
+        this.getBunnySound = new Audio ('/assets/sound/mixkit-video-game-retro-click-237.wav');
+
     }
 
     start() {
@@ -205,8 +208,10 @@ class Game {
         if (collisionNut) {
 
             this.gameOver();
+        
         }
     }
+
 
     gameOver() {
         clearInterval(this.intervalId);
@@ -221,9 +226,12 @@ class Game {
           this.ctx.font = 'bold 132px sans-serif'
           this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 2)
       
-          this.ctx.restore()
+          this.ctx.restore();
 
-          
+          this.sound.pause();
+          this.sound.currenTime = 0;
+          this.gameOverSound.play();
+
     }
 
     oneKeyDown(keyCode) {
@@ -242,10 +250,8 @@ class Game {
 - remake nut sprite for better appearance
 - make player look at left when change direction (photopea para recortar sprites)
 - dead player sprite when nut collision (use another sprite on player class)
-
-- background image for intro screen
-- change start button color (pantone very peri no pega por mucho que te encante)
-- sound!!
+- fix intro screen: logo dissapears when click on screen
+- add sound effects
 
 💡 obtener rewards (o points) saltando x veces en las plataformas y reset a cero si caes al suelo
 */

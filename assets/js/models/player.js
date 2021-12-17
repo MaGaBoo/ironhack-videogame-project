@@ -75,6 +75,7 @@ class Player {
         if (this.y >= this.maxY) {
             this.y = this.maxY;
             this.jumping = 0;
+
         }
         
         if (this.tick % 7 === 0) {
@@ -86,6 +87,7 @@ class Player {
         }
         
     }
+
 
     collidesWithIsland(island) {
         const xPadding = 10;
@@ -120,7 +122,8 @@ class Player {
     
     getOnIsland(islandY) {
 
-        this.maxY = islandY - this.height;   
+        this.maxY = islandY - this.height;
+   
         
     }
 
