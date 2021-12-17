@@ -99,7 +99,9 @@ class Player {
         this.maxY === island.y - this.height + yPadding &&
         this.x + this.width / 2 + xPadding < island.x + island.width &&
         this.x + this.width - this.width / 2 > island.x) {
-            return true;
+
+        return true;
+            
         }
 
         return false;
@@ -117,7 +119,9 @@ class Player {
     }
     
     getOnIsland(islandY) {
-        this.maxY = islandY - this.height;
+
+        this.maxY = islandY - this.height;   
+        
     }
 
     getOnFloor() {
@@ -125,6 +129,7 @@ class Player {
             this.vy = 0;
             this.maxY = 965;
         }
+        
     }
 
     collidesWithNut(nut) {

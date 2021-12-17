@@ -21,11 +21,32 @@ class Game {
         this.fallingNutsFramesCount = 0;
 
         this.score = 0;
+        /* this.jumpingScore = 0; */
+
+        this.sound = new Audio('/assets/sound/POL-macaron-island-short.wav');
+        this.sound.volume = 0.2;
+        
+        const musicLoop = this.sound;
+        if (typeof musicLoop.loop == 'boolean') {
+            musicLoop.loop = true;
+        } else {
+            musicLoop.addEventListener('ended', function() {
+                this.currentTime = 0;
+                this.play();
+            }, false);
+        }
+
+        musicLoop.play;
     }
 
     start() {
+        
 
         if (!this.invervalId) {
+
+            this.sound.play();
+            this.sound.currentTime = 0;
+
             this.intervalId = setInterval(() => {
        
 
@@ -75,6 +96,15 @@ class Game {
         this.ctx.restore();
     }
 
+   /*  drawJumpingScore() {
+        
+        this.ctx.save();
+        this.ctx.fillStyle = 'white';
+        this.ctx.font = "36px sans-serif";
+        this.ctx.fillText(`Jumps: ${this.score}`, 30, 750);
+        this.ctx.restore();
+    } */
+
 
     draw() {
         this.background.draw();
@@ -85,6 +115,7 @@ class Game {
         this.pets.forEach(pet => pet.draw());
         this.fallingNuts.forEach(fallingNut => fallingNut.draw());
         this.drawScore();
+        /* this.drawJumpingScore(); */
     }
 
    
@@ -162,7 +193,8 @@ class Game {
     checkIslandsCollision() {        
         const collisionIsland = this.islands.filter(island => this.player.collidesWithIsland(island))
         if(collisionIsland.length > 0) {
-            this.player.getOnIsland(collisionIsland[0].y + 20)
+            this.player.getOnIsland(collisionIsland[0].y + 20);
+            
         } else {
             this.player.getOnFloor()
         }
@@ -190,6 +222,8 @@ class Game {
           this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 2)
       
           this.ctx.restore()
+
+          
     }
 
     oneKeyDown(keyCode) {
@@ -206,11 +240,12 @@ class Game {
 
 - fix player-nut collision 
 - remake nut sprite for better appearance
-- make player look at left when change direction
-- dead player sprite when nut collision
+- make player look at left when change direction (photopea para recortar sprites)
+- dead player sprite when nut collision (use another sprite on player class)
 
 - background image for intro screen
 - change start button color (pantone very peri no pega por mucho que te encante)
+- sound!!
 
 💡 obtener rewards (o points) saltando x veces en las plataformas y reset a cero si caes al suelo
 */
