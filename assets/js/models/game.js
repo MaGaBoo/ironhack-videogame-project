@@ -7,6 +7,7 @@ class Game {
         this.ctx = ctx;
 
         this.background = new Background(ctx);
+        this.gameOverPic = new GameOverPic(ctx);
         this.cloudsBackground = new CloudsBackground(ctx);
         this.groundBackground = new GroundBackground(ctx);
         this.player = new Player(ctx);
@@ -111,6 +112,7 @@ class Game {
 
     draw() {
         this.background.draw();
+        
         this.cloudsBackground.draw();
         this.groundBackground.draw();
         this.islands.forEach(island => island.draw());
@@ -224,19 +226,16 @@ class Game {
 
         this.ctx.save();
 
-        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+          this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
           this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
-          this.ctx.fillStyle = 'white';
-          this.ctx.textAlign = 'center'
-          this.ctx.font = 'bold 132px sans-serif'
-          this.ctx.fillText('Game Over', this.ctx.canvas.width / 2, this.ctx.canvas.height / 2)
-      
           this.ctx.restore();
 
           this.sound.pause();
           this.sound.currenTime = 0;
           this.gameOverSound.play();
+          this.gameOverPic.draw();
+          
 
     }
 

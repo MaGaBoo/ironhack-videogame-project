@@ -21,3 +21,4 @@ window.onload = function() {
 document.getElementById("heroContainer").addEventListener("click", function() {
     document.getElementById("heroContainer").hidden = true;
 })
+
