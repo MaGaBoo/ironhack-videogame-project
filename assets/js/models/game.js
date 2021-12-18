@@ -1,7 +1,7 @@
 const BUNNIES_FRAMES = 300;
 const ISLANDS_FRAMES = 240;
 const FALLINGNUTS_FRAMES = 60;
-const ROLLINGCOCONUTS_FRAMES = 180;
+const ROLLINGCOCONUTS_FRAMES = 240;
 
 class Game {
     constructor(ctx) {
@@ -90,7 +90,7 @@ class Game {
                 this.checkPetCollission();
                 this.checkIslandsCollision();
                 this.checkNutsCollision();
-               /*  this.checkCoconutsCollision(); */
+                this.checkCoconutsCollision();
 
             }, this.fps)
         }     
@@ -230,6 +230,15 @@ class Game {
 
             this.hittedByNutSound.currentTime = 0;
             this.hittedByNutSound.play();
+
+            this.gameOver();
+        
+        }
+    }
+
+    checkCoconutsCollision() {
+        const collisionrollingCoconut = this.rollingCoconuts.some(rollingCoconut => this.player.collidesWithRollingCoconut(rollingCoconut));
+        if (collisionrollingCoconut) {
 
             this.gameOver();
         

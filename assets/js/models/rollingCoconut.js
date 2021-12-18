@@ -6,7 +6,7 @@ class RollingCoconut {
         this.x = x;
         this.y = y;
 
-        this.vx = 3;
+        this.vx = 10;
         
         this.width = 75;
         this.height = 75;

@@ -141,9 +141,20 @@ class Player {
         this.x + this.width > nut.x &&
         this.y < nut.y + nut.height &&
         this.y + this.height > nut.y
-
-        
+     
     }
+
+    collidesWithRollingCoconut(rollingCoconut) {
+
+        const xCoconutPadding = 5;
+        const yCoconutPadding = 5;
+
+        return this.x + this.width / 2 - xCoconutPadding < rollingCoconut.x + rollingCoconut.width &&
+        this.x + this.width / 2 - xCoconutPadding > rollingCoconut.x &&
+        this.y + this.height >= rollingCoconut.y &&
+        this.y <= rollingCoconut.y + rollingCoconut.height
+    }
+
 
     oneKeyDown(keyCode) {
 
