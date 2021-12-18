@@ -1,4 +1,4 @@
-const BUNNIES_FRAMES = 300;
+const BUNNIES_FRAMES = 180;
 const ISLANDS_FRAMES = 240;
 const FALLINGNUTS_FRAMES = 60;
 const ROLLINGCOCONUTS_FRAMES = 240;
@@ -104,8 +104,9 @@ class Game {
     drawScore() {
         this.ctx.save();
         this.ctx.fillStyle = 'white';
-        this.ctx.font = "36px sans-serif";
-        this.ctx.fillText(`Saved 🐰: ${this.score}`, 30, 700);
+        this.ctx.font = "48px sans-serif";
+        this.ctx.fillText(`Saved 🐰: ${this.score}`, 40, 700);
+
         this.ctx.restore();
     }
 
@@ -228,8 +229,8 @@ class Game {
 
             this.hittedByNutSound.currentTime = 0;
             this.hittedByNutSound.play();
-
-            this.gameOver();
+            this.gameOver();     
+            this.gameOver === true;  
         
         }
     }
@@ -257,7 +258,22 @@ class Game {
           this.sound.currenTime = 0;
           this.gameOverSound.play();
           this.gameOverPic.draw();
-          
+
+          this.ctx.font = '64px sans-serif';
+          this.ctx.fillStyle = 'white';
+
+          if (this.score === 0) {
+
+              this.ctx.fillText(`You saved no bunnies at all!`, 600, 1000);
+
+          } else if (this.score === 1) {
+
+            this.ctx.fillText(`You saved ${this.score} bunny!!`, 680, 1000);
+
+          } else {
+
+            this.ctx.fillText(`You saved ${this.score} bunnies!!`, 680, 1000);
+          }    
 
     }
 
@@ -274,10 +290,8 @@ class Game {
 /* need to check/fix:
 
 - fix player-nut collision 
-- remake nut sprite for better appearance
-- dead player sprite when nut collision (use another sprite on player class)
 - fix intro screen: logo dissapears when click on screen. do something just when click start
-
+- make score counter cuter (adding an image maybe?)
 
 💡 obtener rewards (o points) saltando x veces en las plataformas y reset a cero si caes al suelo
 */
