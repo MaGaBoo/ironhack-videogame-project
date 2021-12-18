@@ -1,4 +1,4 @@
-class FallingNut {
+class Coconut {
     constructor (ctx, x, y) {
 
         this.ctx = ctx;
@@ -6,28 +6,25 @@ class FallingNut {
         this.x = x;
         this.y = y;
 
-        this.vy = 3;
-        this.gravity = 0.2;
-
+        this.vx = 3;
+        
         this.width = 75;
         this.height = 75;
 
         this.img = new Image();
-        this.img.src = '/assets/images/nutSprite.png';
+        this.img.src = '/assets/images/rollinCoconut.png';
         this.img.isReady = false;
         this.img.onload = () => {
             this.img.isReady = true;
-        
         }
 
-        this.horizontalFrames = 8;
+        this.horizontalFrames = 4;
         this.verticalFrames = 1;
 
         this.xFrame = 0;
         this.yFrame = 0;
 
         this.tick = 0;
-
     }
 
     draw() {
@@ -42,11 +39,11 @@ class FallingNut {
                 this.y,
                 this.width,
                 this.height
+
             )
         }
 
         this.tick++
-       
     }
 
     move() {
@@ -59,10 +56,6 @@ class FallingNut {
             this.xFrame = 0
         }
         
-        this.vy += this.gravity;
-        this.y += this.vy;
-
+        this.x += this.vx;
     }
-   
- 
 }

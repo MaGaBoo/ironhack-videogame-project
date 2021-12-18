@@ -28,8 +28,8 @@ class Player {
         this.horizontalFrames = 4;
         this.verticalFrames = 2;
 
-        this.xFrame = 1;
-        this.yFrame = 1;
+        this.xFrame = 0;
+        this.yFrame = 0;
 
         this.running = false;
         this.jumping = false;
@@ -157,12 +157,14 @@ class Player {
         if (keyCode === RIGHT_KEY) {
             this.vx = this.speedX;
             this.running = true;
+            this.yFrame = 0;
         
         }
 
         if (keyCode === LEFT_KEY) {
             this.vx = -this.speedX;
             this.running = true;
+            this.yFrame = 1;
         }
         
     }

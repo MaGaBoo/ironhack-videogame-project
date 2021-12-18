@@ -1,6 +1,7 @@
 const BUNNIES_FRAMES = 300;
 const ISLANDS_FRAMES = 240;
 const FALLINGNUTS_FRAMES = 60;
+const ROLLINGCOCONUT_FRAMES = 180;
 
 class Game {
     constructor(ctx) {
@@ -22,7 +23,6 @@ class Game {
         this.fallingNutsFramesCount = 0;
 
         this.score = 0;
-        /* this.jumpingScore = 0; */
 
         this.sound = new Audio('/assets/sound/POL-macaron-island-short.wav');
         this.sound.volume = 0.3;
@@ -100,15 +100,6 @@ class Game {
         this.ctx.restore();
     }
 
-   /*  drawJumpingScore() {
-        
-        this.ctx.save();
-        this.ctx.fillStyle = 'white';
-        this.ctx.font = "36px sans-serif";
-        this.ctx.fillText(`Jumps: ${this.score}`, 30, 750);
-        this.ctx.restore();
-    } */
-
 
     draw() {
         this.background.draw();
@@ -120,7 +111,7 @@ class Game {
         this.pets.forEach(pet => pet.draw());
         this.fallingNuts.forEach(fallingNut => fallingNut.draw());
         this.drawScore();
-        /* this.drawJumpingScore(); */
+
     }
 
    
@@ -256,7 +247,7 @@ class Game {
 - make player look at left when change direction (photopea para recortar sprites)
 - dead player sprite when nut collision (use another sprite on player class)
 - fix intro screen: logo dissapears when click on screen
-- add game over pic
+
 
 💡 obtener rewards (o points) saltando x veces en las plataformas y reset a cero si caes al suelo
 */
