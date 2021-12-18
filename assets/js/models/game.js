@@ -39,7 +39,7 @@ class Game {
         this.gameOverSound = new Audio ('/assets/sound/mixkit-musical-game-over-959.wav');
         this.jumpSound = new Audio ('/assets/sound/Mario_Jumping-Mike_Koenig-989896458.mp3');
         this.getBunnySound = new Audio ('/assets/sound/mixkit-video-game-retro-click-237.wav');
-
+        this.hittedByNutSound = new Audio ('/assets/sound/hittedByNut.wav')
     }
 
     start() {
@@ -185,6 +185,9 @@ class Game {
         const petColiding = this.pets.find(pet => this.player.collidesWithPet(pet))
         
         if (petColiding) {
+
+            this.getBunnySound.currentTime = 0;
+            this.getBunnySound.play();
             
             this.pets = this.pets.filter(pet => pet !== petColiding);
             
@@ -206,6 +209,9 @@ class Game {
     checkNutsCollision() {
         const collisionNut = this.fallingNuts.some(nut => this.player.collidesWithNut(nut))
         if (collisionNut) {
+
+            this.hittedByNutSound.currentTime = 0;
+            this.hittedByNutSound.play();
 
             this.gameOver();
         
@@ -251,7 +257,7 @@ class Game {
 - make player look at left when change direction (photopea para recortar sprites)
 - dead player sprite when nut collision (use another sprite on player class)
 - fix intro screen: logo dissapears when click on screen
-- add sound effects
+- add game over pic
 
 💡 obtener rewards (o points) saltando x veces en las plataformas y reset a cero si caes al suelo
 */
