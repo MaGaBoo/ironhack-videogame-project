@@ -8,7 +8,7 @@ class Island {
         this.width = 130;
         this.height = 70;
 
-        this.vx = 1;
+        this.vx = 2;
         
 
         this.img = new Image();

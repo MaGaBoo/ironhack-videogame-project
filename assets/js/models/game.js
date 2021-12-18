@@ -1,7 +1,7 @@
 const BUNNIES_FRAMES = 300;
 const ISLANDS_FRAMES = 240;
 const FALLINGNUTS_FRAMES = 60;
-const ROLLINGCOCONUT_FRAMES = 180;
+const ROLLINGCOCONUTS_FRAMES = 180;
 
 class Game {
     constructor(ctx) {
@@ -15,12 +15,14 @@ class Game {
         this.islands = [];
         this.pets = [];
         this.fallingNuts = [];
+        this.rollingCoconuts = [];
 
         this.intervalId = undefined;
         this.fps = 1000 / 60;
         this.petFramesCount = 0;
         this.islandFramesCount = 0;
         this.fallingNutsFramesCount = 0;
+        this.rollingCoconutsFramesCount = 0;
 
         this.score = 0;
 
@@ -70,9 +72,16 @@ class Game {
                     this.fallingNutsFramesCount = 0;
                 }
 
+                if (this.rollingCoconutsFramesCount % ROLLINGCOCONUTS_FRAMES === 0) {
+                    this.addRollingCoconuts();
+                    this.rollingCoconutsFramesCount = 0;
+                }
+
+
                 this.islandFramesCount++;
                 this.petFramesCount++;
                 this.fallingNutsFramesCount++;
+                this.rollingCoconutsFramesCount++;
 
                 this.clear();
                 this.move();
@@ -81,6 +90,7 @@ class Game {
                 this.checkPetCollission();
                 this.checkIslandsCollision();
                 this.checkNutsCollision();
+               /*  this.checkCoconutsCollision(); */
 
             }, this.fps)
         }     
@@ -110,6 +120,7 @@ class Game {
         this.player.draw();
         this.pets.forEach(pet => pet.draw());
         this.fallingNuts.forEach(fallingNut => fallingNut.draw());
+        this.rollingCoconuts.forEach(rollingCoconut => rollingCoconut.draw());
         this.drawScore();
 
     }
@@ -124,6 +135,7 @@ class Game {
         this.pets.forEach(pet => pet.move());
         this.islands.forEach(island => island.move());
         this.fallingNuts.forEach(fallingNut => fallingNut.move());
+        this.rollingCoconuts.forEach(rollingCoconut => rollingCoconut.move());
     }
 
         addPets() {
@@ -171,6 +183,19 @@ class Game {
             new FallingNut (this.ctx, x, y)
         )
            
+    }
+
+    addRollingCoconuts() {
+
+        const coconutPadding = 5;
+        const x = this.ctx.canvas.width + 75;
+        const y = this.ctx.canvas.height - 75 + coconutPadding;
+       
+        this.rollingCoconuts.push(
+
+            new RollingCoconut (this.ctx, x, y),
+            
+        )
     }
 
     

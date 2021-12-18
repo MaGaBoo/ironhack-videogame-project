@@ -8,7 +8,7 @@ class Pet {
         this.width = width;
         this.height = height;
 
-        this.vx = 1;
+        this.vx = 2;
 
         this.img = new Image();
         this.img.src = '/assets/images/bunniesSprite.png';

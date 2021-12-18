@@ -1,4 +1,4 @@
-class Coconut {
+class RollingCoconut {
     constructor (ctx, x, y) {
 
         this.ctx = ctx;
@@ -48,7 +48,7 @@ class Coconut {
 
     move() {
 
-        if (this.tick % 4 === 0) {
+        if (this.tick % 6 === 0) {
             this.xFrame++
         }
 
@@ -56,6 +56,6 @@ class Coconut {
             this.xFrame = 0
         }
         
-        this.x += this.vx;
+        this.x -= this.vx;
     }
 }
