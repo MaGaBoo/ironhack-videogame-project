@@ -47,8 +47,7 @@ class Game {
 
     start() {
         
-
-        if (!this.invervalId) {
+         if (!this.invervalId) {
 
             this.sound.play();
             this.sound.currentTime = 0;
@@ -112,8 +111,8 @@ class Game {
 
 
     draw() {
-        this.background.draw();
         
+        this.background.draw();
         this.cloudsBackground.draw();
         this.groundBackground.draw();
         this.islands.forEach(island => island.draw());
@@ -124,8 +123,6 @@ class Game {
         this.drawScore();
 
     }
-
-   
 
     move() {
       
@@ -139,6 +136,7 @@ class Game {
     }
 
         addPets() {
+
         const petWidth = 75;
         const petHeight = 75;
         const petBottomPadding = 10;
@@ -245,7 +243,6 @@ class Game {
         }
     }
 
-
     gameOver() {
         clearInterval(this.intervalId);
 
@@ -278,9 +275,8 @@ class Game {
 
 - fix player-nut collision 
 - remake nut sprite for better appearance
-- make player look at left when change direction (photopea para recortar sprites)
 - dead player sprite when nut collision (use another sprite on player class)
-- fix intro screen: logo dissapears when click on screen
+- fix intro screen: logo dissapears when click on screen. do something just when click start
 
 
 💡 obtener rewards (o points) saltando x veces en las plataformas y reset a cero si caes al suelo

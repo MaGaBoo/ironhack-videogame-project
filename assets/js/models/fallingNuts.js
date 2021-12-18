@@ -13,14 +13,14 @@ class FallingNut {
         this.height = 75;
 
         this.img = new Image();
-        this.img.src = '/assets/images/nutSprite.png';
+        this.img.src = '/assets/images/fallingNutSprite.png';
         this.img.isReady = false;
         this.img.onload = () => {
             this.img.isReady = true;
         
         }
 
-        this.horizontalFrames = 8;
+        this.horizontalFrames = 5;
         this.verticalFrames = 1;
 
         this.xFrame = 0;

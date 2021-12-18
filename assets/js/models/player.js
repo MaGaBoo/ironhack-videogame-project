@@ -35,8 +35,32 @@ class Player {
         this.jumping = false;
 
         this.tick = 0;
-    }
 
+        /* dead sprite down here */
+
+       /* this.x = x;
+       this.y = y;
+        
+        this.gameOverWidth = 100;
+        this.gameOverHeight = 115;
+
+        this.gameOverImg = new Image();
+        this.gameOverImg.src = '/assets/images/gameOverSprite.png';
+        this.gameOverImg.isReady = false;
+
+        this.gameOverImg.onload = () => {
+            this.gameOverImg.isReady = true;
+        }
+
+        this.gameOverHorizontalFrames = 3;
+        this.gameOverVerticalFrames = 1;
+
+        this.xFrameGameOver = 0;
+        this.yFrameGameOver = 0;
+
+        this.gameOverTick = 0;
+    } */
+}
     draw() {
         if (this.img.isReady) {
             this.ctx.drawImage(
@@ -52,9 +76,29 @@ class Player {
             )
             this.tick++;
         }
+
     }
 
+    /* drawGameOver() {
+
+        if (this.gameOverImg.isReady) {
+            this.ctx.drawImage(
+                this.gameOverImg,
+                (this.gameOverImg.gameOverWidth * this.xFrameGameOver) / this.gameOverHorizontalFrames,
+                (this.gameOverImg.gameOverHeight * this.yFrameGameOver) / this.gameOverVerticalFrames,
+                this.gameOverImg.gameOverWidth / this.gameOverHorizontalFrames,
+                this.gameOverImg.gameOverHeight / this.gameOverVerticalFrames,
+                this.xGameOver,
+                this.yGameOver,
+                this.gameOverWidth,
+                this.gameOverHeight
+            )
+            this.gameOverTick++;
+        }
+    } */
+
     move() {
+
         this.x += this.vx;
         this.vy += this.ay;
         this.prevY = this.y;
@@ -85,8 +129,15 @@ class Player {
         if (this.xFrame > (this.horizontalFrames - 1)) {
             this.xFrame = 0;
         }
-        
+     
     }
+
+    /* moveGameOver() {
+
+        if (this.gameOverTick % 7 === 0) {
+            this.xFrameGameOver++;
+        }
+    } */
 
 
     collidesWithIsland(island) {
@@ -112,7 +163,6 @@ class Player {
      collidesWithPet(pet) {
 
         const xPetPadding = 10;
-        const yPetPadding = 10;
 
         return this.x + this.width / 2 - xPetPadding < pet.x + pet.width &&
         this.x + this.width / 2 - xPetPadding > pet.x &&
@@ -147,8 +197,7 @@ class Player {
     collidesWithRollingCoconut(rollingCoconut) {
 
         const xCoconutPadding = 5;
-        const yCoconutPadding = 5;
-
+    
         return this.x + this.width / 2 - xCoconutPadding < rollingCoconut.x + rollingCoconut.width &&
         this.x + this.width / 2 - xCoconutPadding > rollingCoconut.x &&
         this.y + this.height >= rollingCoconut.y &&
