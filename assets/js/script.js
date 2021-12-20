@@ -5,8 +5,11 @@ const ctx = canvas.getContext('2d');
 const game = new Game(ctx);
 
 window.onload = function() {
+
     document.getElementById('start-button').onclick = () => {
+        document.getElementById("heroContainer").hidden = true;
         game.start();
+
     }
 
     document.addEventListener('keydown', (event) => {
@@ -18,7 +21,5 @@ window.onload = function() {
       })
 }
 
-document.getElementById("heroContainer").addEventListener("click", function() {
-    document.getElementById("heroContainer").hidden = true;
-})
+
 

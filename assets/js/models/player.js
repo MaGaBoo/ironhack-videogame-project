@@ -12,7 +12,7 @@ class Player {
         this.vy = 1;
         this.ay = 1;
 
-        this.speedX = 8;
+        this.speedX = 10;
 
         this.width = 100;
         this.height = 115;
@@ -119,6 +119,17 @@ class Player {
         this.y + this.height >= pet.y &&
         this.y <= pet.y + pet.height
     }
+
+    collidesWithCat(cat) {
+
+        const xCatPadding = 5;
+
+        return this.x + this.width / 2 - xCatPadding < cat.x + cat.width &&
+        this.x + this.width / 2 - xCatPadding > cat.x &&
+        this.y + this.height >= cat.y &&
+        this.y <= cat.y + cat.height
+    }
+
     
     getOnIsland(islandY) {
 

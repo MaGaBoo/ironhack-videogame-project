@@ -1,5 +1,6 @@
-class Pet {
+class Cat {
     constructor(ctx, x, y, width, height) {
+
         this.ctx = ctx;
 
         this.x = x;
@@ -8,25 +9,23 @@ class Pet {
         this.width = width;
         this.height = height;
 
-        this.vx = 3;
+        this.vx = 2;
 
         this.img = new Image();
-        this.img.src = '/assets/images/bunniesSprite.png';
+        this.img.src = '/assets/images/catSpriteSheet.png';
         this.img.isReady = false;
         this.img.onload = () => {
             this.img.isReady = true;
         }
 
         this.horizontalFrames = 3;
-        this.verticalFrames = 1;
+        this.verticalFrames = 2;
 
         this.xFrame = 0;
         this.yFrame = 0;
 
         this.tick = 0;
-      
     }
-
     draw() {
         if (this.img.isReady) {
             this.ctx.drawImage(
@@ -59,3 +58,5 @@ class Pet {
 
         }
     }
+
+
