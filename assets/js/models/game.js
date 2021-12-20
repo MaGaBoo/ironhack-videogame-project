@@ -3,6 +3,7 @@ const CATS_FRAMES = 1200;
 const ISLANDS_FRAMES = 240;
 const FALLINGNUTS_FRAMES = 60;
 const ROLLINGCOCONUTS_FRAMES = 240;
+const STARS_FRAMES = 600;
 
 class Game {
     constructor(ctx) {
@@ -19,6 +20,7 @@ class Game {
         this.cats = [];
         this.fallingNuts = [];
         this.rollingCoconuts = [];
+        this.stars = [];
 
         this.intervalId = undefined;
         this.fps = 1000 / 60;
@@ -27,6 +29,7 @@ class Game {
         this.islandFramesCount = 0;
         this.fallingNutsFramesCount = 0;
         this.rollingCoconutsFramesCount = 0;
+        this.starsFramesCount = 0;
 
         this.score = 0;
 
@@ -86,12 +89,18 @@ class Game {
                     this.rollingCoconutsFramesCount = 0;
                 }
 
+                if (this.starsFramesCount % STARS_FRAMES === 0) {
+                    this.addStars();
+                    this.starsFramesCount = 0;
+                }
+
 
                 this.islandFramesCount++;
                 this.petFramesCount++;
                 this.catsFramesCount++;
                 this.fallingNutsFramesCount++;
                 this.rollingCoconutsFramesCount++;
+                this.starsFramesCount++;
 
                 this.clear();
                 this.move();
@@ -136,6 +145,7 @@ class Game {
         this.cats.forEach(cat => cat.draw());
         this.fallingNuts.forEach(fallingNut => fallingNut.draw());
         this.rollingCoconuts.forEach(rollingCoconut => rollingCoconut.draw());
+        this.stars.forEach(star => star.draw());
         this.drawScore();
 
     }
@@ -150,6 +160,7 @@ class Game {
         this.islands.forEach(island => island.move());
         this.fallingNuts.forEach(fallingNut => fallingNut.move());
         this.rollingCoconuts.forEach(rollingCoconut => rollingCoconut.move());
+        this.stars.forEach(star => star.move());
     }
 
     addPets() {
@@ -216,6 +227,16 @@ class Game {
             new FallingNut (this.ctx, x, y)
         )
            
+    }
+
+    addStars() {
+
+        const x = this.ctx.canvas.width + 55;
+        const y = 200; 
+
+        this.stars.push(
+            new Star (this.ctx, x, y)
+        )
     }
 
     addRollingCoconuts() {
