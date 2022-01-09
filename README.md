@@ -1,5 +1,7 @@
  # 🐰 Bunnies Story <h1>
  
+ ![bunnies_logo](https://github.com/MaGaBoo/ironhack-videogame-project/blob/master/assets/images/Game%20logo_cut.png)
+ 
 A game about a little brave girl saving pets.
 
 This is my first project as Ironhack Web Development student. 
