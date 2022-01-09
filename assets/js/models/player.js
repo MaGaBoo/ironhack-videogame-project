@@ -130,6 +130,16 @@ class Player {
         this.y <= cat.y + cat.height
     }
 
+    collidesWithStar(star) {
+
+        const xStarPadding = 3;
+
+        return this.x + this.width / 2 - xStarPadding < star.x + star.width &&
+        this.x + this.width / 2 - xStarPadding > star.x &&
+        this.y + this.height >= star.y &&
+        this.y <= star.y + star.height
+    }
+
     
     getOnIsland(islandY) {
 

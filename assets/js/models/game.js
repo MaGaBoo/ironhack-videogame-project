@@ -32,6 +32,7 @@ class Game {
         this.starsFramesCount = 0;
 
         this.score = 0;
+        this.starScore = 0;
 
         this.sound = new Audio('/assets/sound/POL-macaron-island-short.wav');
         this.sound.volume = 0.3;
@@ -51,6 +52,7 @@ class Game {
         this.getBunnySound = new Audio ('/assets/sound/mixkit-video-game-retro-click-237.wav');
         this.hittedByNutSound = new Audio ('/assets/sound/hittedByNut.wav');
         this.bonusCatSound = new Audio ('/assets/sound/mixkit-angry-cartoon-kitty-meow-94.wav');
+        this.starSound = new Audio ('/assets/sound/mixkit-game-ball-tap-2073.wav')
     }
 
     start() {
@@ -111,6 +113,7 @@ class Game {
                 this.checkNutsCollision();
                 this.checkCoconutsCollision();
                 this.checkCatCollission();
+                this.checkStarsCollission();
 
             }, this.fps)
         }     
@@ -124,10 +127,10 @@ class Game {
 
     drawScore() {
         this.ctx.save();
-        this.counterImg.draw();
         this.ctx.fillStyle = '#665878';
         this.ctx.font = "48px sans-serif";
         this.ctx.fillText(`Saved 🐰: ${this.score}`, 190, 165);
+        this.ctx.fillText(`Reached ⭐: ${this.starScore}`, 190, 225)
         
 
         this.ctx.restore();
@@ -282,6 +285,21 @@ class Game {
             
         }
     }
+
+    checkStarsCollission() {
+        const starColiding = this.stars.find(star => this.player.collidesWithStar(star))
+        
+        if (starColiding) {
+
+            this.starSound.currentTime = 0;
+            this.starSound.play();
+            
+            this.stars = this.stars.filter(star => star !== starColiding);
+            
+            this.starScore++ 
+            
+        }
+    }
      
     checkIslandsCollision() {        
         const collisionIsland = this.islands.filter(island => this.player.collidesWithIsland(island))
@@ -357,11 +375,3 @@ class Game {
 
 }
 
-/* need to check/fix:
-
-- fix intro screen: logo dissapears when click on screen. do something just when click start
-- make score counter cuter (adding an image maybe?)
-
-
-💡 obtener rewards (o points) saltando x veces en las plataformas y reset a cero si caes al suelo
-*/
