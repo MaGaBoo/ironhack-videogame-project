@@ -1,8 +1,5 @@
  # 🐰 Bunnies Story <h1>
  
- ![Bunnies Story logo](/images\Game logo_cut.png)
-Format: ![Alt Text](url)
-
 A game about a little brave girl saving pets.
 
 This is my first project as Ironhack Web Development student. 
