@@ -1,4 +1,3 @@
- # 🐰 Bunnies Story <h1>
  
  ![bunnies_logo](https://github.com/MaGaBoo/ironhack-videogame-project/blob/master/assets/images/Game%20logo_cut.png)
  
