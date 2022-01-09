@@ -7,7 +7,7 @@ I wanted to create a cute, funny game and learn as much as possible about sprite
 
 Please, let me know if you enjoyed it and ask me anything you´ll like to know about the creation process.
 
- ###### ⬇️ You can play Bunnies Story here ⬇️ <h6>
+ # ⬇️ You can play Bunnies Story here ⬇️ <h6>
 
 http://127.0.0.1:5500/index.html
 
