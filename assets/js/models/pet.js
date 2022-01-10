@@ -11,7 +11,7 @@ class Pet {
         this.vx = 3;
 
         this.img = new Image();
-        this.img.src = '/assets/images/bunniesSprite.png';
+        this.img.src = './assets/images/bunniesSprite.png';
         this.img.isReady = false;
         this.img.onload = () => {
             this.img.isReady = true;

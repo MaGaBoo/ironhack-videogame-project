@@ -18,7 +18,7 @@ class Player {
         this.height = 115;
 
         this.img = new Image();
-        this.img.src = "/assets/images/playerSpriteBoth.png";
+        this.img.src = "./assets/images/playerSpriteBoth.png";
         this.img.isReady = false;
 
         this.img.onload = () => {

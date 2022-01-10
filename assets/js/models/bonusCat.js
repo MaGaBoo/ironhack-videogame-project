@@ -12,7 +12,7 @@ class Cat {
         this.vx = 2;
 
         this.img = new Image();
-        this.img.src = '/assets/images/catSpriteSheet.png';
+        this.img.src = './assets/images/catSpriteSheet.png';
         this.img.isReady = false;
         this.img.onload = () => {
             this.img.isReady = true;

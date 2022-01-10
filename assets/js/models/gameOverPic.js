@@ -8,7 +8,7 @@ class GameOverPic {
         this.height = 1000;
 
         this.img = new Image();
-        this.img.src = '/assets/images/gameOver pic.png';
+        this.img.src = './assets/images/gameOver pic.png';
         this.img.isReady = false;
         this.img.onload = () => {
             this.img.isReady = true;

@@ -12,7 +12,7 @@ class Star {
         this.height = 55;
 
         this.img = new Image();
-        this.img.src = '/assets/images/star_sprite.png';
+        this.img.src = './assets/images/star_sprite.png';
         this.img.isReady = false;
         this.img.onload = () => {
             this.img.isReady = true;

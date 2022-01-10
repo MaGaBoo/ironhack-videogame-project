@@ -10,7 +10,7 @@ class GroundBackground {
         this.height = this.ctx.canvas.height;
 
         this.img = new Image();
-        this.img.src = '/assets/images/layer01_Ground.png';
+        this.img.src = './assets/images/layer01_Ground.png';
         this.img.isReady = false;
 
         this.img.onload = () => {

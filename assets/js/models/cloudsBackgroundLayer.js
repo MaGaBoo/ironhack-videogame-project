@@ -9,7 +9,7 @@ class CloudsBackground {
         this.height = this.ctx.canvas.height;
 
         this.img = new Image();
-        this.img.src = '/assets/images/layer05_Clouds.png';
+        this.img.src = './assets/images/layer05_Clouds.png';
         this.img.isReady = false;
 
         this.img.onload = () => {

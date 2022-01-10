@@ -12,7 +12,7 @@ class Island {
         
 
         this.img = new Image();
-        this.img.src = "/assets/images/Pad_02_1.png";
+        this.img.src = "./assets/images/Pad_02_1.png";
         this.img.isReady = false;
 
         this.img.onload = () => {

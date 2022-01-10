@@ -34,7 +34,7 @@ class Game {
         this.score = 0;
         this.starScore = 0;
 
-        this.sound = new Audio('/assets/sound/POL-macaron-island-short.wav');
+        this.sound = new Audio('./assets/sound/POL-macaron-island-short.wav');
         this.sound.volume = 0.3;
         
         const musicLoop = this.sound;
@@ -47,12 +47,12 @@ class Game {
             }, false);
         }
 
-        this.gameOverSound = new Audio ('/assets/sound/mixkit-musical-game-over-959.wav');
-        this.jumpSound = new Audio ('/assets/sound/Mario_Jumping-Mike_Koenig-989896458.mp3');
-        this.getBunnySound = new Audio ('/assets/sound/mixkit-video-game-retro-click-237.wav');
-        this.hittedByNutSound = new Audio ('/assets/sound/hittedByNut.wav');
-        this.bonusCatSound = new Audio ('/assets/sound/mixkit-angry-cartoon-kitty-meow-94.wav');
-        this.starSound = new Audio ('/assets/sound/mixkit-game-ball-tap-2073.wav')
+        this.gameOverSound = new Audio ('./assets/sound/mixkit-musical-game-over-959.wav');
+        this.jumpSound = new Audio ('./assets/sound/Mario_Jumping-Mike_Koenig-989896458.mp3');
+        this.getBunnySound = new Audio ('./assets/sound/mixkit-video-game-retro-click-237.wav');
+        this.hittedByNutSound = new Audio ('./assets/sound/hittedByNut.wav');
+        this.bonusCatSound = new Audio ('./assets/sound/mixkit-angry-cartoon-kitty-meow-94.wav');
+        this.starSound = new Audio ('./assets/sound/mixkit-game-ball-tap-2073.wav')
     }
 
     start() {
