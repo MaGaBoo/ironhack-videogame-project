@@ -1,7 +1,7 @@
  
  ![bunnies_logo](https://github.com/MaGaBoo/ironhack-videogame-project/blob/master/assets/images/Game%20logo_cut.png)
  
-A game about a little brave girl saving pets.
+**A game about a little brave girl saving pets.**
 
 This is my first project as Ironhack Web Development student. 
 I wanted to create a cute, funny game and learn as much as possible about sprites and background creation and the logic behind a platform video game.
