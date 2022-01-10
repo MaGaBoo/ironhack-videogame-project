@@ -6,7 +6,9 @@
 This is my first project as Ironhack Web Development student. 
 I wanted to create a cute, funny game and learn as much as possible about sprites and background creation and the logic behind a platform video game. Play it is easy: just use the arrows left ⬅️ and right ➡️ to move and press the up key ⬆️ to jump.
 
+
 <img src="https://user-images.githubusercontent.com/91290073/148745236-2f070f6e-066a-457a-94a8-f6bd8f605c51.png" width="600" height="300" style="max-width: 100%">
+
 
 
 I really enjoyed the process of creating sprites, choosing the stuff and adding movement to background elements. I wanted a cute
