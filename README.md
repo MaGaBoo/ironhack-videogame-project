@@ -16,7 +16,7 @@ María
 
  ### ⬇️ You can play Bunnies Story here ⬇️ <h3>
 
-<a href="https://github.com/MaGaBoo/ironhack-videogame-project/blob/master/index.html" rel="nofollow">
+<a href="http://127.0.0.1:5500/index.html" rel="nofollow">
 <img src="https://github.com/MaGaBoo/ironhack-videogame-project/blob/master/assets/images/Play.png">
  
 
