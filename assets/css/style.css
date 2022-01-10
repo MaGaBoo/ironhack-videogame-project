@@ -50,5 +50,5 @@ body button {
 #game-canvas {
     width: 1000px;
     border: 2px solid black;
-    background: url('../images/introBackground.png')
+    background: #03989E;
 }
