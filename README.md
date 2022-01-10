@@ -11,7 +11,7 @@ I wanted to create a cute, funny game and learn as much as possible about sprite
 
 
 
-I really enjoyed the process of creating sprites, choosing the stuff and adding movement to background elements. I wanted a cute
+I really enjoyed the process of creating sprites, choosing the stuff and adding movement to background elements.
 The most difficult issue I had to face was keeping the player on the islands after jumping; I solved it playing with the maximum height reached after jump. It has been funny and challenging in equal parts!
 
 Please, let me know if you enjoyed Bunnies Story and ask me anything you´ll like to know about the creation process.
