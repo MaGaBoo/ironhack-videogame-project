@@ -6,7 +6,7 @@
 This is my first project as Ironhack Web Development student. 
 I wanted to create a cute, funny game and learn as much as possible about sprites and background creation and the logic behind a platform video game.
 
-![game_demo](<img width="749" alt="image" src="https://user-images.githubusercontent.com/91290073/148745236-2f070f6e-066a-457a-94a8-f6bd8f605c51.png">)
+![game_demo](<img width="550" alt="gameDemo" src="https://user-images.githubusercontent.com/91290073/148745236-2f070f6e-066a-457a-94a8-f6bd8f605c51.png" />)
 
 
 
