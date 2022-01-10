@@ -20,7 +20,7 @@ María
 
  ### ⬇️ You can try Bunnies Story here ⬇️ <h3>
 
-<a href="http://127.0.0.1:5500/index.html" rel="nofollow">
+<a href="https://magaboo.github.io/ironhack-videogame-project/" rel="nofollow">
 <img src="https://github.com/MaGaBoo/ironhack-videogame-project/blob/master/assets/images/Play.png">
  
 
