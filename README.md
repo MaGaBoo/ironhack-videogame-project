@@ -13,7 +13,7 @@ Please, let me know if you enjoyed it and ask me anything you´ll like to know a
  ### ⬇️ You can play Bunnies Story here ⬇️ <h3>
 
 <a href="http://127.0.0.1:5500/index.html" rel="nofollow">
- <img src="">
+ <img src="https://github.com/MaGaBoo/ironhack-videogame-project/blob/master/assets/images/Play.png">
  http://127.0.0.1:5500/index.html
 
 Thanks!
