@@ -6,7 +6,8 @@
 This is my first project as Ironhack Web Development student. 
 I wanted to create a cute, funny game and learn as much as possible about sprites and background creation and the logic behind a platform video game.
 
-![game_example](https://user-images.githubusercontent.com/91290073/148744919-d774cc3a-5491-44a2-a963-f7ba146ee1b3.png)
+![game_demo](<img width="749" alt="image" src="https://user-images.githubusercontent.com/91290073/148745236-2f070f6e-066a-457a-94a8-f6bd8f605c51.png">)
+
 
 
 I really enjoyed the process of creating sprites and stuff and add movement to background elements. The most difficult issue I had to face was the logic behind collision between player and things, so I added different items to reach and to avoid in order to learn more about how it worked. It has been funny and challenging in equal parts!
